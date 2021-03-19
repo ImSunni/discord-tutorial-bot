@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'unban',
-    run: async (client, message, args) => {
+    run: async (Client, message, args) => {
 
         if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('You are missing **BAN_MEMBERS** permission!').then(m => m.delete({ timeout: 5000 }));
 
@@ -11,7 +11,7 @@ module.exports = {
         let member;
 
         try {
-            member = await client.users.fetch(args[0])
+            member = await Client.users.fetch(args[0])
         } catch (e) {
             console.log(e)
             return message.channel.send('Not a valid user!').then(m => m.delete({ timeout: 5000 }));
